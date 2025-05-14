@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     background: url('BG.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: white; /* Make text readable */
+    color: white;
     scroll-behavior: smooth;
     min-height: 100vh;
 }
@@ -27,17 +27,17 @@ body {
     background-size: cover;
 }
 
-/* Optional: add a subtle overlay on hero for better text contrast */
+/* Optional: overlay on hero for better text contrast */
 .hero::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* semi-transparent dark overlay */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 
 .name-overlay {
-    position: relative; /* above overlay */
+    position: relative;
     z-index: 2;
     color: white;
     text-align: center;
@@ -52,13 +52,13 @@ h1 {
 /* Gallery Section */
 .gallery {
     padding: 50px 0;
-    background-color: rgba(240, 240, 240, 0.85); /* slightly transparent white */
+    background-color: rgba(240, 240, 240, 0.85);
     text-align: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color: #333; /* darker text for readability */
+    color: #333;
 }
 
 .image-container {
@@ -66,31 +66,33 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: waveEffect 1.5s ease-out forwards;
 }
 
+/* Window opening animation */
+/* Initial state: images scaled vertically down to 0 */
 .image {
     width: 300px;
     height: 400px;
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.5s ease;
+    transform-origin: center top;
+    transform: scaleY(0);
+    opacity: 0;
 }
 
-.image:hover {
-    transform: scale(1.05);
+/* Animate class triggers window open */
+.image.animate {
+    animation: windowOpen 0.8s forwards;
 }
 
-/* Animation for the images to appear in a wave effect */
-@keyframes waveEffect {
+@keyframes windowOpen {
     0% {
+        transform: scaleY(0);
         opacity: 0;
-        transform: translateY(50px);
     }
     100% {
+        transform: scaleY(1);
         opacity: 1;
-        transform: translateY(0);
     }
 }
