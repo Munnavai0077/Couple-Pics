@@ -27,7 +27,6 @@ body {
     background-size: cover;
 }
 
-/* Optional: overlay on hero for better text contrast */
 .hero::before {
     content: "";
     position: absolute;
@@ -63,27 +62,39 @@ h1 {
 
 .image-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
     gap: 20px;
+    padding: 20px;
+    scrollbar-width: none;
 }
 
-/* Window opening animation */
-/* Initial state: images scaled vertically down to 0 */
+.image-container::-webkit-scrollbar {
+    display: none;
+}
+
 .image {
-    width: 300px;
-    height: 400px;
+    flex: 0 0 auto;
+    width: 250px;
+    height: 350px;
     object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.5s ease;
-    transform-origin: center top;
-    transform: scaleY(0);
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    transform-origin: center center;
+    transform: scale(1);
     opacity: 0;
 }
 
 /* Animate class triggers window open */
 .image.animate {
     animation: windowOpen 0.8s forwards;
+}
+
+.image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
 }
 
 @keyframes windowOpen {
