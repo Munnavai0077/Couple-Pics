@@ -1,0 +1,85 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('heart-background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+.name-overlay {
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 3rem;
+}
+
+h1 {
+    font-size: 4rem;
+    letter-spacing: 3px;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 50px 0;
+    background-color: #f0f0f0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: waveEffect 1.5s ease-out forwards;
+}
+
+.image {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.image:hover {
+    transform: scale(1.05);
+}
+
+/* Animation for the images to appear in a wave effect */
+@keyframes waveEffect {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll-based animations */
+body {
+    scroll-behavior: smooth;
+}
